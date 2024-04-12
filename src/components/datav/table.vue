@@ -22,7 +22,7 @@ const config = {
         ['SANGC086-2', '0', '1', '-1', '4', '6', '5', '-2', '-3', '-2', '0'],
     ],
     // index: true,
-    columnWidth: [150],
+    columnWidth: [120,65,65,65,65,70,65,80,65,65,100],
     align: ['center'],
     carousel: 'page',
     rowNum: 8,

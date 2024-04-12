@@ -30,7 +30,7 @@
                     <dv-decoration-9 style="width:80px;height: 80px;font-size: 1.2rem;">120</dv-decoration-9>
                 </div>
                 <div class="item">
-                    <div>NGC造型欠缺数量</div>
+                    <div>NGC欠缺数量</div>
                     <dv-decoration-9 style="width:80px;height: 80px;font-size: 1.2rem;">200</dv-decoration-9>
                 </div>
             </div> 
@@ -40,7 +40,7 @@
 <style scoped>
 .card {
     display: flex;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     margin-left: 25px;
     margin-right: 25px;
 }
@@ -57,7 +57,7 @@
     height: 100px;
     /* border: 1px solid #ffffff; */
     color: #ffffff;
-    font-size: 1.2rem;
+    font-size: 1rem;
     flex: 0 1 100%;
     display: flex;
     text-align: center;

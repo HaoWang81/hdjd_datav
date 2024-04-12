@@ -5,12 +5,13 @@ const chart = ref()//创建dom引入
 console.log(chart)
 onMounted(() => {
     var option = {
-        title:{
-            text:'小件数量每日对比',
+        title: {
+            text: '小件数量每日对比',
             textStyle: {
                 color: '#ffffff', // 设置字体颜色
                 fontSize: 16  // 设置字体大小
-            }
+            },
+            left: 150
         },
         tooltip: {
             trigger: 'axis',
@@ -22,13 +23,15 @@ onMounted(() => {
             data: ['昨日', '今日'],
             textStyle: {
                 color: '#ffffff', // 设置字体颜色
-                fontSize: 16  // 设置字体大小
-            }
+                fontSize: 12  // 设置字体大小
+            },
+            x: 'right',
+            orient: "vertical",
         },
         grid: {
-            left: '3%',
+            left: '8%',
             right: '4%',
-            bottom: '3%',
+            bottom: '10%',
             containLabel: true
         },
         xAxis: [
@@ -38,7 +41,14 @@ onMounted(() => {
                     textStyle: {
                         color: '#ffffff', // 设置字体颜色
                         fontSize: 16  // 设置字体大小
-                    }
+                    },
+                    show: false
+                },
+                axisLine: {
+                    show: false // 隐藏Y轴线条
+                },
+                splitLine: {
+                    show: false // 隐藏分隔线
                 }
             },
         ],
@@ -48,12 +58,21 @@ onMounted(() => {
                 axisTick: {
                     show: false
                 },
-                data: ['NGC-12', 'NGC-1234', 'NGC-44', 'NGC-21', 'NGC-12', 'NGC-22', 'NGC-16'],
+                data: ['周日', '周六', '周五', '周四', '周三', '周二', '周一'],
                 axisLabel: {
                     textStyle: {
                         color: '#ffffff', // 设置字体颜色
-                        fontSize: 16  // 设置字体大小
+                        fontSize: 14  // 设置字体大小
                     }
+                },
+                axisLine: {
+                    show: false // 隐藏Y轴线条
+                },
+                splitLine: {
+                    show: false // 隐藏分隔线
+                },
+                axisTick: {
+                    show: false
                 }
             }
         ],

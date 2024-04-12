@@ -1,9 +1,9 @@
 <script setup>
 import * as echarts from 'echarts'
-import { ref, onMounted,defineProps } from 'vue'
+import { ref, onMounted, defineProps } from 'vue'
 const chart = ref()//创建dom引入
 const props = defineProps({
-  optionData: Object
+    optionData: Object
 });
 onMounted(() => {
     var option = {
@@ -12,22 +12,33 @@ onMounted(() => {
             textStyle: {
                 color: '#ffffff', // 设置字体颜色
                 fontSize: 16  // 设置字体大小
-            }
+            },
+            top: props.optionData.title.top,
+            left: props.optionData.title.left,
+            // textAlign :'center'
         },
         tooltip: {
             trigger: 'axis'
         },
         legend: {
-            data: ['本周', '上周'],
+            data: ['本周', '上周', '标准'],
             textStyle: {
                 color: '#ffffff', // 设置字体颜色
-                fontSize: 16  // 设置字体大小
-            }
+                fontSize: 12  // 设置字体大小
+            },
+            top: props.optionData.legend.top,
+            left: props.optionData.legend.left,
+            x: 'right',
+            align: 'right',
+            left: 20,
+            orient: "vertical",
+
         },
         grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
+            left: '8%',
+            // right: '4%',
+            bottom: props.optionData.grid.bottom,
+            top: '30%',
             containLabel: true
         },
         // toolbox: {
@@ -44,7 +55,10 @@ onMounted(() => {
                     color: '#ffffff', // 设置字体颜色
                     fontSize: 16  // 设置字体大小
                 }
-            }
+            },
+            axisLine: {
+                show: false // 隐藏Y轴线条
+            },
         },
         yAxis: {
             type: 'value',
@@ -53,20 +67,50 @@ onMounted(() => {
                     color: '#ffffff', // 设置字体颜色
                     fontSize: 16  // 设置字体大小
                 }
+            },
+            show: false,
+            axisLine: {
+                show: false // 隐藏Y轴线条
+            },
+            splitLine: {
+                show: false // 隐藏分隔线
             }
         },
         series: [
             {
                 name: '本周',
                 type: 'line',
-                stack: 'Total',
-                data: [120, 132, 101, 134, 90, 230, 210]
+                // stack: 'Total',
+                data: [120, 132, 101, 134, 90, 230, 210],
+                showSymbol: true, //是否默认展示圆点
+                symbol: "circle", // 默认是空心圆（中间是白色的）
+                symbolSize: 7,
+                label: {
+                    show: true,
+                    position: 'outside'
+                },
+
             },
             {
                 name: '上周',
                 type: 'line',
-                stack: 'Total',
-                data: [220, 182, 191, 234, 290, 330, 310]
+                // stack: 'Total',
+                data: [220, 182, 191, 234, 290, 330, 310],
+                label: {
+                    show: true,
+                    position: 'outside'
+                },
+            }
+            ,
+            {
+                name: '标准',
+                type: 'line',
+                // stack: 'Total',
+                data: [190, 190, 190, 190, 190, 190, 190],
+                label: {
+                    show: false,
+                    position: 'outside'
+                },
             }
         ]
     };

@@ -6,8 +6,12 @@
         </div>
         <div class="center">
             <dv-decoration-11
-                style="height:80px;letter-spacing: 2cm;font-size: 38px;font-weight: bolder;color: #ffffff;">宏德机电</dv-decoration-11>
-            <dv-decoration-5 style="width:100%;height:40px;"  dur='8'/>
+                style="height:80px;letter-spacing: 0.5cm;font-size: 38px;font-weight: bolder;color: #ffffff;">
+                <div style="padding-left: 12px;">
+                    宏德铸铁生产监控
+                </div>
+            </dv-decoration-11>
+            <dv-decoration-5 style="width:100%;height:40px;" dur='8' />
         </div>
         <div class="right">
             <dv-decoration-8 :reverse="true" style="height:50px;" />
