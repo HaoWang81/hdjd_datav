@@ -1,9 +1,25 @@
 <script setup>
 import * as echarts from 'echarts'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch, defineProps } from 'vue'
 const chart = ref()//创建dom引入
 console.log(chart)
+
+const props = defineProps(
+    {
+        周对比: Object
+    }
+)
+watch(props.周对比, (newValue, oldValue) => {
+
+    console.log('数据遍历')
+    initChart()
+});
+
 onMounted(() => {
+    initChart()
+})
+
+const initChart = () => {
     var option = {
         title: {
             text: '小件数量每日对比',
@@ -20,7 +36,7 @@ onMounted(() => {
             }
         },
         legend: {
-            data: ['昨日', '今日'],
+            data: ['本周', '上周'],
             textStyle: {
                 color: '#ffffff', // 设置字体颜色
                 fontSize: 12  // 设置字体大小
@@ -78,7 +94,7 @@ onMounted(() => {
         ],
         series: [
             {
-                name: '昨日',
+                name: '本周',
                 type: 'bar',
                 label: {
                     show: true,
@@ -87,20 +103,17 @@ onMounted(() => {
                 emphasis: {
                     focus: 'series'
                 },
-                data: [200, 170, 240, 244, 200, 220, 210]
+                data: props.周对比.本周
             },
             {
-                name: '今日',
+                name: '上周',
                 type: 'bar',
                 stack: 'Total',
                 label: {
                     show: true,
                     position: 'outside'
                 },
-                // emphasis: {
-                //     focus: 'series'
-                // },
-                data: [320, 302, 341, 374, 390, 450, 420]
+                data: props.周对比.上周
             }
         ]
     };
@@ -109,7 +122,7 @@ onMounted(() => {
     window.addEventListener('resize', () => {
         myChart.resize()
     })
-})
+}
 </script>
 <template>
     <div ref="chart" style="width: 100%;height: 35vh;">

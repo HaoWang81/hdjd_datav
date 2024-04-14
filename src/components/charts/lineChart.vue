@@ -1,12 +1,25 @@
 <script setup>
 import * as echarts from 'echarts'
-import { ref, onMounted, defineProps } from 'vue'
+import { ref, onMounted, defineProps, watch } from 'vue'
 const chart = ref()//创建dom引入
 const props = defineProps({
-    optionData: Object
+    optionData: Object,
+    周对比: Object
 });
+
+
+
+let myChart = null
 onMounted(() => {
-    var option = {
+    myChart = echarts.init(chart.value)
+    initChart()
+})
+watch(props.optionData, (newValue, oldValue) => {
+    initChart()
+});
+
+const initChart = () => {
+    let option = {
         title: {
             text: props.optionData.title.text,
             textStyle: {
@@ -32,7 +45,6 @@ onMounted(() => {
             align: 'right',
             left: 20,
             orient: "vertical",
-
         },
         grid: {
             left: '8%',
@@ -81,7 +93,7 @@ onMounted(() => {
                 name: '本周',
                 type: 'line',
                 // stack: 'Total',
-                data: [120, 132, 101, 134, 90, 230, 210],
+                data: props.周对比.本周,
                 showSymbol: true, //是否默认展示圆点
                 symbol: "circle", // 默认是空心圆（中间是白色的）
                 symbolSize: 7,
@@ -95,7 +107,7 @@ onMounted(() => {
                 name: '上周',
                 type: 'line',
                 // stack: 'Total',
-                data: [220, 182, 191, 234, 290, 330, 310],
+                data: props.周对比.上周,
                 label: {
                     show: true,
                     position: 'outside'
@@ -106,7 +118,7 @@ onMounted(() => {
                 name: '标准',
                 type: 'line',
                 // stack: 'Total',
-                data: [190, 190, 190, 190, 190, 190, 190],
+                data: props.周对比.标准,
                 label: {
                     show: false,
                     position: 'outside'
@@ -114,12 +126,13 @@ onMounted(() => {
             }
         ]
     };
-    var myChart = echarts.init(chart.value)
     myChart.setOption(option)
     window.addEventListener('resize', () => {
         myChart.resize()
     })
-})
+}
+
+
 </script>
 <template>
     <div ref="chart" style="width: 100%;height: 35vh;">

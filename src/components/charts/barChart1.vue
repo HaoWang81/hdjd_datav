@@ -1,8 +1,12 @@
 <script setup>
 import * as echarts from 'echarts'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, defineProps } from 'vue'
 const chart = ref()//创建dom引入
-console.log(chart)
+
+const props = defineProps({
+  周对比: Object
+})
+
 onMounted(() => {
   var option = {
     title: {
@@ -29,14 +33,14 @@ onMounted(() => {
     tooltip: {},
     dataset: {
       source: [
-        ['日期', '本周', '上周'],
-        ['周一', 43.3, 85.8],
-        ['周二', 83.1, 73.4],
-        ['周三', 86.4, 65.2],
-        ['周四', 72.4, 53.9],
-        ['周五', 83.1, 73.4],
-        ['周六', 86.4, 65.2],
-        ['周日', 72.4, 53.9],
+        ['日期', '本周', '上周','标准'],
+        props.周对比.周一,
+        props.周对比.周二,
+        props.周对比.周三,
+        props.周对比.周四,
+        props.周对比.周五,
+        props.周对比.周六,
+        props.周对比.周日,
       ]
     },
     xAxis: {
