@@ -6,12 +6,11 @@ console.log(chart)
 
 const props = defineProps(
     {
-        周对比: Object
+        周对比: Object,
+        option:Object
     }
 )
-watch(props.周对比, (newValue, oldValue) => {
-
-    console.log('数据遍历')
+watch(props.option, (newValue, oldValue) => {
     initChart()
 });
 
@@ -22,7 +21,7 @@ onMounted(() => {
 const initChart = () => {
     var option = {
         title: {
-            text: '小件数量每日对比',
+            text:props.option.title.text,
             textStyle: {
                 color: '#ffffff', // 设置字体颜色
                 fontSize: 16  // 设置字体大小
@@ -36,7 +35,7 @@ const initChart = () => {
             }
         },
         legend: {
-            data: ['本周', '上周'],
+            data: ['本周', '上周','标准'],
             textStyle: {
                 color: '#ffffff', // 设置字体颜色
                 fontSize: 12  // 设置字体大小
@@ -45,14 +44,16 @@ const initChart = () => {
             orient: "vertical",
         },
         grid: {
+            top:"10%",
             left: '8%',
-            right: '4%',
+            right: '20%',
             bottom: '10%',
             containLabel: true
         },
         xAxis: [
             {
                 type: 'value',
+                min:.5,
                 axisLabel: {
                     textStyle: {
                         color: '#ffffff', // 设置字体颜色
@@ -103,17 +104,27 @@ const initChart = () => {
                 emphasis: {
                     focus: 'series'
                 },
-                data: props.周对比.本周
+                data: props.周对比.本周.slice().reverse()
             },
             {
                 name: '上周',
                 type: 'bar',
-                stack: 'Total',
+                // stack: 'Total',
                 label: {
                     show: true,
                     position: 'outside'
                 },
-                data: props.周对比.上周
+                data: props.周对比.上周.slice().reverse()
+            },
+            {
+                name: '标准',
+                type: 'bar',
+                // stack: 'Total',
+                label: {
+                    show: true,
+                    position: 'outside'
+                },
+                data: props.周对比.标准.slice().reverse()
             }
         ]
     };
