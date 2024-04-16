@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["vue","node"],
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -18,7 +19,20 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /**/
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    /*
+    解决main.ts在引入
+      import App from './App.vue'
+      import router from '@/router/index.js'
+     无法打包编译
+    */
+    "allowJs": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
