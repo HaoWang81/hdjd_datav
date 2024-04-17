@@ -1,6 +1,6 @@
 <script setup>
 import '@/assets/css/screen.css'
-import {reactive, defineComponent, ref, onMounted, toRefs, onBeforeMount} from 'vue'
+import {reactive, defineComponent, ref, onMounted} from 'vue'
 import lineChart from '../components/charts/lineChart.vue'
 import barChart from '../components/charts/barChart.vue'
 import barChart1 from '../components/charts/barChart1.vue'
@@ -60,7 +60,7 @@ const tableConfig = ref({
       header: ['厂号', '造型', '合箱', '开箱', '打磨', '热处理', '精修', '毛坯检验', '涂装', '加工', '加工检验'],
       data: tableData,
       // index: true,
-      // columnWidth: [120,65,65,65,65,70,65,80,65,65,100],
+      columnWidth: [130,],
       align: ['center'],
       carousel: 'page',
       rowNum: 8,
@@ -154,6 +154,7 @@ onMounted(() => {
   fetchData(formattedTime)
   fetchChartHighWeight(formattedTime)
   fetchNgcData(formattedTime)
+
 })
 
 const fetchData = async (date_str) => {
@@ -195,7 +196,6 @@ const fetchChartHighWeight = async (date_str) => {
         南高齿造型数量周对比.value.周五 = ['周五', 南高齿造型数量周对比_temp.本周[4], 南高齿造型数量周对比_temp.上周[4], 20]
         南高齿造型数量周对比.value.周六 = ['周六', 南高齿造型数量周对比_temp.本周[5], 南高齿造型数量周对比_temp.上周[5], 20]
         南高齿造型数量周对比.value.周日 = ['周日', 南高齿造型数量周对比_temp.本周[6], 南高齿造型数量周对比_temp.上周[6], 20]
-        console.log("==", 小件数量周对比)
         // optionData1.value.data=大件数量周对比
       })
       .catch(error => {
@@ -235,4 +235,8 @@ const fetchChartHighWeight = async (date_str) => {
   </dv-full-screen-container>
 </template>
 
-<style type="text/css"></style>
+<style scoped>
+.redText {
+  color: red;
+}
+</style>

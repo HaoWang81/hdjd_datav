@@ -6,7 +6,7 @@
         </div>
         <div class="center">
             <dv-decoration-11
-                style="height:80px;letter-spacing: 0.5cm;font-size: 38px;font-weight: bolder;color: #ffffff;">
+                style="height:80px;letter-spacing: 0.5cm;font-size: 1.3rem;font-weight: bolder;color: #ffffff;">
                 <div style="padding-left: 12px;">
                     宏德铸铁生产监控
                 </div>

@@ -1,31 +1,28 @@
 <script setup>
-import {watch,defineProps,watchEffect,ref} from 'vue'
+import {watch, defineProps, watchEffect, ref, nextTick} from 'vue'
 
 
-const props=defineProps({
-    data:Object,
-    config:Object
+const props = defineProps({
+  data: Object,
+  config: Object
 })
 // const config=ref(props.config)
 
 
 watch(props.data, (newValue, oldValue) => {
-    console.log("1==",newValue)
-    console.log("2==",oldValue)
-    props.config.data=newValue
+  props.config.data = newValue
 });
-
 
 </script>
 
 <template>
-    <div style="margin: 10px;width: 100%;font-size: 30px;">
-        <dv-scroll-board :config="props.config" style="height: 32vh" />
-    </div>
+  <div style="margin: 10px;width: 100%;font-size: 30px;">
+    <dv-scroll-board :config="props.config" style="height: 32vh"/>
+  </div>
 </template>
 
 <style scoped>
-.header{
-    font-size: large !important;
+.header {
+  font-size: large !important;
 }
 </style>
