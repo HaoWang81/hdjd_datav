@@ -4,7 +4,8 @@ import screen from '@/views/screen.vue'
 </script>
 
 <template>
-  <screen></screen>
+
+  <router-view></router-view>
 </template>
 
 <style scoped></style>

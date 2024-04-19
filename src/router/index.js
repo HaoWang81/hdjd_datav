@@ -1,10 +1,16 @@
-import { createRouter, createWebHashHistory } from "vue-router";
-import App from "../App.vue";
+import {createRouter, createWebHashHistory} from "vue-router";
+import screen from "@/views/screen.vue";
+import manage from "@/views/settings/manage.vue";
+
 const routes = [
     {
         path: '/',
-        name: 'App',
-        component: App
+        name: 'screen',
+        component: screen
+    }, {
+        path: '/settings/manage',
+        name: 'manage',
+        component: manage
     }
 ]
 
