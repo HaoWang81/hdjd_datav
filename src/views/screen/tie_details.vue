@@ -1,14 +1,13 @@
 <script setup>
 import '@/assets/css/screen.css'
 import {reactive, defineComponent, ref, onMounted} from 'vue'
-import lineChart from '../components/charts/lineChart.vue'
-import barChart from '../components/charts/barChart.vue'
-import barChart1 from '../components/charts/barChart1.vue'
-import headDatav from '../components/datav/head.vue'
-import cardDatav from '../components/datav/card.vue'
-import tableDatav from '../components/datav/table.vue'
+import lineChart from '../../components/charts/lineChart.vue'
+import barChart from '../../components/charts/barChart.vue'
+import barChart1 from '../../components/charts/barChart1.vue'
+import headDatav from '../../components/datav/head.vue'
+import cardDatav from '../../components/datav/card.vue'
+import tableDatav from '../../components/datav/table.vue'
 import axios from 'axios'
-
 const screenDefineComponent = defineComponent({
   components: {
     lineChart,
@@ -65,6 +64,7 @@ const tableConfig = ref({
       carousel: 'page',
       rowNum: 8,
       headerHeight: 30,
+      waitTime:10000,
       headerBGC: 'rgb(15,34,56,0.8) ',
       oddRowBGC: 'rgb(15,34,56,0.8) ',
       evenRowBGC: 'rgb(54,92,112,0.8) '
