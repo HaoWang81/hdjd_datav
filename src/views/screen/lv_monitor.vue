@@ -3,7 +3,32 @@
 import {ref, watch, onMounted} from "vue";
 import axios from "axios";
 
-const columns = ["今日造型", "本周造型", "打磨", "热处理", "精修", "毛坯在制", "毛坯成品", "今日加工", "本周加工", "加工在制", "今日清理", "本周清理", "清理在制"];
+const value = ref('')
+const options = [
+  {
+    value: '造型工段',
+    label: '造型工段',
+  },
+  {
+    value: '打磨工段明细',
+    label: '打磨工段明细',
+  },
+  {
+    value: '打磨工段计划',
+    label: '打磨工段计划',
+  },
+  {
+    value: '加工工段',
+    label: '加工工段',
+  },
+  {
+    value: '清理工段',
+    label: '清理工段',
+  },
+]
+
+
+const columns = ["今日造型", "本周造型", "本月造型欠数", "今日转序", "本周转序", "本月转序欠数", "毛坯成品", "打磨", "热处理", "精修", "毛坯在制", "今日加工", "本周加工", "月度加工", "加工在制", "今日清理", "本周清理", "月度清理", "清理在制"];
 // 默认选中的项目
 const defaultCheckedItems = ["本周造型", "本周加工", '本周清理'];
 
@@ -23,7 +48,7 @@ onMounted(() => {
     checkList.value = ["本周造型", "本周加工", '本周清理']
     tableData.value = data.value
   } else {
-    checkList.value = ["今日造型", "本周造型", "打磨", "热处理", "精修", "毛坯在制", "毛坯成品", "今日加工", "本周加工", "加工在制", "今日清理", "本周清理", "清理在制"];
+    checkList.value = ["今日造型", "本周造型", "本月造型欠数", "今日转序", "本周转序", "本月转序欠数", "毛坯成品", "打磨", "热处理", "精修", "毛坯在制", "今日加工", "本周加工", "月度加工", "加工在制", "今日清理", "本周清理", "月度清理", "清理在制"];
     let index = 0;
     setInterval(() => {
       const newData = [];
@@ -49,6 +74,20 @@ const fetchData = () => {
   })
 }
 
+const selectChange = (value) => {
+  if (value == '造型工段') {
+    checkList.value = ['今日造型', '本周造型', '本月造型欠数']
+  } else if (value == '打磨工段计划') {
+    checkList.value = ['今日转序', '本周转序', '本月转序欠数', '毛坯成品']
+  } else if (value == '打磨工段明细') {
+    checkList.value = ['打磨', '热处理', '精修', '毛坯在制']
+  } else if (value == '加工工段') {
+    checkList.value = ['今日加工', '本周加工', '月度加工', '加工在制']
+  } else if (value == '清理工段') {
+    checkList.value = ['今日清理', '本周清理', '月度清理', '清理在制']
+  }
+}
+
 </script>
 <template>
   <div class="lv_monitor_container">
@@ -62,36 +101,25 @@ const fetchData = () => {
     <div class="lv_monitor_content">
 
       <el-select v-show="isMobile"
-                 v-model="checkList"
-                 multiple
-                 placeholder="Select"
+                 placeholder="请选择查看的工段"
                  style="width: 100%"
+                 @change="selectChange"
+                 v-model="value"
       >
         <el-option
-            v-for="item in columns"
-            :key="item"
-            :label="item"
-            :value="item"
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
         />
+
       </el-select>
       <div class="table-container">
         <table>
           <thead>
           <tr>
             <th>厂号</th>
-            <th v-show="checkList.includes('今日造型')">今日造型</th>
-            <th v-show="checkList.includes('本周造型')">本周造型</th>
-            <th v-show="checkList.includes('打磨')">打磨</th>
-            <th v-show="checkList.includes('热处理')">热处理</th>
-            <th v-show="checkList.includes('精修')">精修</th>
-            <th v-show="checkList.includes('毛坯在制')">毛坯在制</th>
-            <th v-show="checkList.includes('毛坯成品')">毛坯成品</th>
-            <th v-show="checkList.includes('今日加工')">今日加工</th>
-            <th v-show="checkList.includes('本周加工')">本周加工</th>
-            <th v-show="checkList.includes('加工在制')">加工在制</th>
-            <th v-show="checkList.includes('今日清理')">今日清理</th>
-            <th v-show="checkList.includes('本周清理')">本周清理</th>
-            <th v-show="checkList.includes('清理在制')">清理在制</th>
+            <th v-show="checkList.includes(item)" v-for="item in columns">{{ item }}</th>
           </tr>
           </thead>
           <tbody>
@@ -99,19 +127,9 @@ const fetchData = () => {
           <tr v-for="(item,index) in (isMobile?data:tableData)"
               :key="index">
             <td>{{ item[0] }}</td>
-            <td v-show=" checkList.includes('今日造型')" :class="{'red-text':item[1]<0}">{{ item[1] }}</td>
-            <td v-show=" checkList.includes('本周造型')" :class="{'red-text':item[2]<0}">{{ item[2] }}</td>
-            <td v-show=" checkList.includes('打磨')" :class="{'red-text':item[3]<0}">{{ item[3] }}</td>
-            <td v-show=" checkList.includes('热处理')" :class="{'red-text':item[4]<0}">{{ item[4] }}</td>
-            <td v-show=" checkList.includes('精修')" :class="{'red-text':item[0]<0}">{{ item[5] }}</td>
-            <td v-show=" checkList.includes('毛坯在制')" :class="{'red-text':item[6]<0}">{{ item[6] }}</td>
-            <td v-show=" checkList.includes('毛坯成品')" :class="{'red-text':item[7]<0}">{{ item[7] }}</td>
-            <td v-show=" checkList.includes('今日加工')" :class="{'red-text':item[8]<0}">{{ item[8] }}</td>
-            <td v-show=" checkList.includes('本周加工')" :class="{'red-text':item[9]<0}">{{ item[9] }}</td>
-            <td v-show=" checkList.includes('加工在制')" :class="{'red-text':item[10]<0}">{{ item[10] }}</td>
-            <td v-show=" checkList.includes('今日清理')" :class="{'red-text':item[11]<0}">{{ item[11] }}</td>
-            <td v-show=" checkList.includes('本周清理')" :class="{'red-text':item[12]<0}">{{ item[12] }}</td>
-            <td v-show=" checkList.includes('清理在制')" :class="{'red-text':item[13]<0}">{{ item[13] }}</td>
+            <td v-for="(column,column_index) in columns" v-show=" checkList.includes(column)"
+                :class="{'red-text':item[column_index+1]<0}">{{ item[column_index + 1] }}
+            </td>
           </tr>
 
           <!-- 更多表体行 -->
