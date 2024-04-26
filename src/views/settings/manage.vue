@@ -35,13 +35,14 @@ const fallback = (e) => {
   <el-form v-loading="loading" :model="form" label-width="auto" style="width: 100%">
     <el-form-item label="数据类型">
       <el-radio-group v-model="radio" :onchange="radioChange">
-        <el-radio :value="1">铁件生产监控</el-radio>
+        <el-radio :value="1">南高齿生产监控</el-radio>
         <el-radio :value="2">铁件各工段明细</el-radio>
         <el-radio :value="3">铝件计划</el-radio>
+        <el-radio :value="4">铁件计划</el-radio>
       </el-radio-group>
     </el-form-item>
     <el-form-item label="上传" style="text-align: right">
-      <el-upload style="width: 100%"
+      <el-upload style="width:80%"
                  class="upload-demo"
                  accept="*.xslx"
                  drag

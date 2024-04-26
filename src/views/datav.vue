@@ -28,13 +28,16 @@ const handleSelect = (key, keyPath) => {
               <el-sub-menu index="2">
                 <template #title>大屏分析</template>
                 <el-menu-item index="2-1">
-                  <router-link to="/screen/tie" class="fullscreen-link">铁件</router-link>
+                  <router-link to="/screen/tie" class="fullscreen-link" target='_blank'>铁件工段明细监控</router-link>
                 </el-menu-item>
                 <el-menu-item index="2-2">
-                  <router-link to="/screen/lv" class="fullscreen-link">铝件</router-link>
+                  <a href="http://www.laotianshi.top/screen" target='_blank'>南高齿铁件生产监控</a>
                 </el-menu-item>
                 <el-menu-item index="2-3">
-                  <router-link to="/datav/screen/lv_monitor">铝件监控</router-link>
+                  <router-link to="/screen/tie_monitor" target='_blank'>铁件生产监控</router-link>
+                </el-menu-item>
+                <el-menu-item index="2-4">
+                  <router-link to="/screen/lv_monitor" target='_blank'>铝件生产监控</router-link>
                 </el-menu-item>
               </el-sub-menu>
               <el-sub-menu index="3">
