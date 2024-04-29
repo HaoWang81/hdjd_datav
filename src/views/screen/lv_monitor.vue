@@ -93,7 +93,7 @@ const selectChange = (value) => {
   <div class="lv_monitor_container">
     <div class="lv_monitor_head">
       <dv-decoration-11 style="height: 100%;width: 100%">
-        <span style="font-size: 100%;font-weight: bolder;color: white">
+        <span style="font-size: 2vh;font-weight: bolder;color: white">
          铸铝生产监控大屏
         </span>
       </dv-decoration-11>
@@ -161,14 +161,14 @@ const selectChange = (value) => {
 .lv_monitor_content {
   padding: 2vh 5vw 5vh 5vw;
   background-color: #081832;
-  height: 79vh;
+  height: 85vh;
   color: #ffffff;
   background-color: #081832;
 }
 
 .table-container {
   overflow-y: auto; /* 允许纵向滚动 */
-  max-height: 60vh; /* 设置表格容器的最大高度，超过此高度将出现纵向滚动条 */
+  max-height: 80vh; /* 设置表格容器的最大高度，超过此高度将出现纵向滚动条 */
   box-shadow: -10px 0px 15px #034c6a inset, 0px -10px 15px #034c6a inset, 10px 0px 15px #034c6a inset, 0px 10px 15px #034c6a inset;
   padding: 2vh 2vw 2vh 2vw;
   margin-top: 2vh;
@@ -187,6 +187,10 @@ table {
   width: 100%;
   border-collapse: collapse;
   background-color: #081832;
+}
+
+tr {
+  line-height: 3vh;
 }
 
 th {

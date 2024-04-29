@@ -1,4 +1,5 @@
 import {createRouter, createWebHashHistory} from "vue-router";
+import tie_details_mb from "@/views/screen/tie_details_mb.vue";
 import tie_details from "@/views/screen/tie_details.vue";
 import lv_monitor from "@/views/screen/lv_monitor.vue";
 import tie_monitor from "@/views/screen/tie_monitor.vue";
@@ -23,7 +24,7 @@ const routes = [
         name: 'lv_monitor',
         component: lv_monitor
     },
-        {
+    {
         path: '/screen/tie_monitor',
         name: 'tie_monitor',
         component: tie_monitor
@@ -47,6 +48,10 @@ const routes = [
                 path: '/screen/tie',
                 name: 'screen_tie',
                 component: tie_details
+            }, {
+                path: '/screen/tie_mb',
+                name: 'screen_tie_mb',
+                component: tie_details_mb
             },
             {
                 path: '/settings/manage',

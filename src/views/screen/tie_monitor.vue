@@ -27,7 +27,7 @@ const options = [
   },
 ]
 
-const columns = ["今日制芯", "今日合箱", "今日开箱", "本周合箱", "月度制芯", "今日转序", "	本周转序", "月度转序", "月度销售", "毛坯成品", "打磨", "热处理", "精修", "毛坯检验", "涂装", "毛坯在制", "今日加工", "本周加工", "月度加工", "加工月度销售", "加工在制", "今日清理", "本周清理", "月度清理", "清理在制"];
+const columns = ["今日制芯", "今日合箱", "今日开箱", "本周合箱", "月度制芯", "今日转序", "本周转序", "月度转序", "月度销售", "毛坯成品", "打磨", "热处理", "精修", "毛坯检验", "涂装", "毛坯在制", "今日加工", "本周加工", "月度加工", "加工月度销售", "加工在制", "今日清理", "本周清理", "月度清理", "清理在制"];
 
 
 // 默认选中的项目
@@ -94,7 +94,7 @@ const selectChange = (value) => {
   <div class="tie_monitor_container">
     <div class="tie_monitor_head">
       <dv-decoration-11 style="height: 100%;width: 100%">
-        <span style="font-size: 100%;font-weight: bolder;color: white">
+        <span style="font-size: 2vh;font-weight: bolder;color: white">
          铸铁生产监控大屏
         </span>
       </dv-decoration-11>
@@ -162,14 +162,14 @@ const selectChange = (value) => {
 .tie_monitor_content {
   padding: 2vh 5vw 5vh 5vw;
   background-color: #081832;
-  height: 79vh;
+  height: 85vh;
   color: #ffffff;
   background-color: #081832;
 }
 
 .table-container {
   overflow-y: auto; /* 允许纵向滚动 */
-  max-height: 60vh; /* 设置表格容器的最大高度，超过此高度将出现纵向滚动条 */
+  max-height: 80vh; /* 设置表格容器的最大高度，超过此高度将出现纵向滚动条 */
   box-shadow: -10px 0px 15px #034c6a inset, 0px -10px 15px #034c6a inset, 10px 0px 15px #034c6a inset, 0px 10px 15px #034c6a inset;
   padding: 2vh 2vw 2vh 2vw;
   margin-top: 2vh;
@@ -188,6 +188,10 @@ table {
   width: 100%;
   border-collapse: collapse;
   background-color: #081832;
+}
+
+tr {
+  line-height: 3vh;
 }
 
 th {
