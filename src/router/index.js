@@ -2,6 +2,7 @@ import {createRouter, createWebHashHistory} from "vue-router";
 import tie_details_mb from "@/views/screen/tie_details_mb.vue";
 import tie_details from "@/views/screen/tie_details.vue";
 import lv_monitor from "@/views/screen/lv_monitor.vue";
+import ngc_monitor from "@/views/screen/ngc_monitor.vue";
 import tie_monitor from "@/views/screen/tie_monitor.vue";
 import lv_details from "@/views/screen/lv_details.vue";
 import setting_manage from "@/views/settings/manage.vue";
@@ -28,6 +29,11 @@ const routes = [
         path: '/screen/tie_monitor',
         name: 'tie_monitor',
         component: tie_monitor
+    },
+    {
+        path: '/screen/ngc_monitor',
+        name: 'ngc_monitor',
+        component: ngc_monitor
     },
     {
         path: '/datav',

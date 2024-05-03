@@ -48,6 +48,9 @@ const resetRoute = (route) => {
                 <el-menu-item index="2-4">
                   <router-link to="/screen/lv_monitor" target='_blank'>铝件生产监控</router-link>
                 </el-menu-item>
+                <el-menu-item index="2-5">
+                  <router-link to="/screen/ngc_monitor" target='_blank'>南高齿内部生产监控</router-link>
+                </el-menu-item>
               </el-sub-menu>
               <el-sub-menu index="3">
                 <template #title>系统配置</template>
@@ -124,9 +127,7 @@ const resetRoute = (route) => {
 }
 
 .head {
-  //display: flex;
-  align-content: center;
-  align-items: center;
+//display: flex; align-content: center; align-items: center;
   height: 100%;
   background-color: #535B63FF;
 }
