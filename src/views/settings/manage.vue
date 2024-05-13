@@ -38,6 +38,7 @@ const fallback = (e) => {
         <el-radio :value="1">南高齿生产监控</el-radio>
         <el-radio :value="5">南高齿内部生产监控</el-radio>
         <el-radio :value="2">铁件各工段明细</el-radio>
+        <el-radio :value="6">铝件各工段明细</el-radio>
         <el-radio :value="3">铝件计划</el-radio>
         <el-radio :value="4">铁件计划</el-radio>
       </el-radio-group>

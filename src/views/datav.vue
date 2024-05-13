@@ -40,15 +40,20 @@ const resetRoute = (route) => {
                   </router-link>
                 </el-menu-item>
                 <el-menu-item index="2-2">
-                  <a href="http://www.laotianshi.top/ngc_monitor" target='_blank'>南高齿铁件生产监控</a>
+                  <router-link :to="resetRoute('/screen/lv')" class="fullscreen-link" target='_blank'>
+                    铝件工段明细监控
+                  </router-link>
                 </el-menu-item>
                 <el-menu-item index="2-3">
-                  <router-link to="/screen/tie_monitor" target='_blank'>铁件生产监控</router-link>
+                  <a href="http://www.laotianshi.top/ngc_monitor" target='_blank'>南高齿铁件生产监控</a>
                 </el-menu-item>
                 <el-menu-item index="2-4">
-                  <router-link to="/screen/lv_monitor" target='_blank'>铝件生产监控</router-link>
+                  <router-link to="/screen/tie_monitor" target='_blank'>铁件生产监控</router-link>
                 </el-menu-item>
                 <el-menu-item index="2-5">
+                  <router-link to="/screen/lv_monitor" target='_blank'>铝件生产监控</router-link>
+                </el-menu-item>
+                <el-menu-item index="2-6">
                   <router-link to="/screen/ngc_monitor" target='_blank'>南高齿内部生产监控</router-link>
                 </el-menu-item>
               </el-sub-menu>
@@ -127,7 +132,7 @@ const resetRoute = (route) => {
 }
 
 .head {
-//display: flex; align-content: center; align-items: center;
+  //display: flex; align-content: center; align-items: center;
   height: 100%;
   background-color: #535B63FF;
 }

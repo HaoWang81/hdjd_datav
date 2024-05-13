@@ -6,21 +6,32 @@ import axios from "axios";
 const lvCountOption = ref({
   data: {},
   title: {
-    text: "铸铝生产监控访问统计"
+    text: "铸铝生产监控访问统计",
+    textStyle: {}
   }
 })
 
 const ngcCountOption = ref({
   data: [],
   title: {
-    text: "南高齿生产监控访问统计"
+    text: "南高齿生产监控访问统计",
+    textStyle: {}
+  }
+})
+
+const ngcInnerCountOption = ref({
+  data: [],
+  title: {
+    text: "南高齿内部生产监控访问统计",
+    textStyle: {}
   }
 })
 
 const tieCountOption = ref({
   data: [],
   title: {
-    text: "铸铁生产监控访问统计"
+    text: "铸铁生产监控访问统计",
+    textStyle: {}
   }
 })
 
@@ -34,6 +45,7 @@ onMounted(() => {
   fetch_ngcCount()
   fetch_tieCount()
   fetch_ipCount()
+  fetch_ngcInnerCount()
 })
 
 const fetch_lvCount = () => {
@@ -45,6 +57,12 @@ const fetch_lvCount = () => {
 const fetch_ngcCount = () => {
   axios.post("/api/home/ngcCount").then((response) => {
     ngcCountOption.value.data = response.data
+  })
+}
+
+const fetch_ngcInnerCount = () => {
+  axios.post("/api/home/ngcInnerCount").then((response) => {
+    ngcInnerCountOption.value.data = response.data
   })
 }
 
@@ -87,14 +105,17 @@ const fetch_ipCount = () => {
     </el-card>
     <!--    <el-card shadow="always">Never</el-card>-->
   </div>
-  <div>
+  <div style="height: 20%;">
     <onelineChart :optionData="lvCountOption"></onelineChart>
   </div>
-  <div>
+  <div style="height: 20%;">
     <onelineChart :optionData="tieCountOption"></onelineChart>
   </div>
-  <div>
+  <div style="height: 20%;">
     <onelineChart :optionData="ngcCountOption"></onelineChart>
+  </div>
+  <div style="height: 20%;">
+    <onelineChart :optionData="ngcInnerCountOption"></onelineChart>
   </div>
 </template>
 <style scoped>

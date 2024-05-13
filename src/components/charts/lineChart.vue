@@ -91,11 +91,6 @@ const initChart = () => {
       top: '30%',
       containLabel: true
     },
-    // toolbox: {
-    //     feature: {
-    //         saveAsImage: {}
-    //     }
-    // },
     xAxis: {
       type: 'category',
       boundaryGap: false,
