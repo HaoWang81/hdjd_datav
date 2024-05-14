@@ -75,7 +75,7 @@ const card_data = ref({
   '本月综合废率': '0%',
   '本月合计报废重量': '0（kg）'
 })
-
+const chart_data = ref({})
 const fetch_card = () => {
   axios.post('/api/screen/lv_detail/card', {}) // 发送请求，不需要写完整的 URL
       .then(response => {
@@ -88,7 +88,7 @@ const fetch_card = () => {
 const fetch_chart = () => {
   axios.post('/api/screen/lv_detail/queryChart', {}) // 发送请求，不需要写完整的 URL
       .then(response => {
-        card_data.value = response.data
+        chart_data.value = response.data
       })
       .catch(error => {
         console.error('Error fetching data:', error);

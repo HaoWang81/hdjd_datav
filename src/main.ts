@@ -3,7 +3,6 @@ import './style.css'
 import App from './App.vue'
 import router from '@/router/index.js'
 import DataVVue3 from '@kjgl77/datav-vue3'
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 
 import ElementPlus from 'element-plus'
