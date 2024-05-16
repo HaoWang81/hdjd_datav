@@ -14,11 +14,15 @@ const initOption = ref({
       color: '#000000',
       fontSize: 16  // 设置字体大小
     },
+    right: '-50%'
   },
-  data: {
-    y: [1, 2, 43, 43],
-    x: ['示例1', '示例2', '示例3', '示例4']
-  }
+  data: [
+    ['product', '2015', '2016', '2017'],
+    ['Matcha Latte', 43.3, 85.8, 93.7],
+    ['Milk Tea', 83.1, 73.4, 55.1],
+    ['Cheese Cocoa', 86.4, 65.2, 82.5],
+    ['Walnut Brownie', 72.4, 53.9, 39.1]
+  ]
 })
 
 
@@ -30,29 +34,76 @@ onMounted(() => {
 })
 watch(props.optionData, (newValue, oldValue) => {
   initOption.value = newValue
+  console.log('========', initOption.value.data)
   initChart()
 });
 
 const initChart = () => {
-
-
   let option = {
-    legend: {},
-    tooltip: {},
-    dataset: {
-      dimensions: ['product', '2015', '2016', '2017'],
-      source: [
-        {product: 'Matcha Latte', 2015: 43.3, 2016: 85.8, 2017: 93.7},
-        {product: 'Milk Tea', 2015: 83.1, 2016: 73.4, 2017: 55.1},
-        {product: 'Cheese Cocoa', 2015: 86.4, 2016: 65.2, 2017: 82.5},
-        {product: 'Walnut Brownie', 2015: 72.4, 2016: 53.9, 2017: 39.1}
-      ]
+    title: {
+      text: props.optionData.title.text,
+      textStyle: props.optionData.title.textStyle,
+      left: '45%',
+      top: '5%'
     },
-    xAxis: {type: 'category'},
-    yAxis: {},
+    legend: {
+      x: 'left',
+      left: '5%',
+      top: '5%',
+      orient: 'vertical',
+      textStyle: {
+        color: '#ffffff', // 设置字体颜色
+        fontSize: 12  // 设置字体大小
+      },
+    },
+    tooltip: {
+      trigger: 'axis'
+    },
+    grid: {
+      bottom: '10%'
+    },
+    dataset: {
+      source: props.optionData.data
+    },
+    xAxis: {
+      type: 'category',
+      axisLabel: {
+        textStyle: {
+          color: '#ffffff', // 设置字体颜色
+          fontSize: 16  // 设置字体大小
+        }
+      },
+    },
+    yAxis: {
+      show: false,
+      axisLine: {
+        show: false // 隐藏Y轴线条
+      },
+      splitLine: {
+        show: false // 隐藏分隔线
+      },
+      axisLabel: {
+        textStyle: {
+          color: '#ffffff', // 设置字体颜色
+          fontSize: 16  // 设置字体大小
+        }
+      },
+    },
     // Declare several bar series, each will be mapped
     // to a column of dataset.source by default.
-    series: [{type: 'bar'}, {type: 'bar'}, {type: 'bar'}]
+    series: [{
+      type: 'bar',
+      label: {
+        show: true,
+        position: 'top'
+      },
+    }, {
+      type: 'bar',
+      label: {
+        show: true,
+        position: 'top'
+      },
+    }]
   };
   myChart.setOption(option)
   window.addEventListener('resize', () => {
