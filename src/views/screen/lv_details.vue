@@ -109,7 +109,7 @@ const fetch_chart = () => {
       <dv-decoration-8 style="width:300px;height:50px;flex: 0 1 30%"/>
       <div style="flex:0 1 40%;text-align: center">
         <div style="width: 100%;font-size: 2rem;font-weight: bolder;color: #ffffff">
-          宏德机电铝件生产监控
+          宏德铝件生产监控
         </div>
         <dv-decoration-5 style="width:100%;height:80%;"/>
       </div>

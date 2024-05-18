@@ -103,7 +103,14 @@ const initChart = () => {
         show: true,
         position: 'top'
       },
-    }]
+    }
+      , {
+        type: 'bar',
+        label: {
+          show: true,
+          position: 'top'
+        },
+      }]
   };
   myChart.setOption(option)
   window.addEventListener('resize', () => {
