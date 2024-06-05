@@ -1,6 +1,5 @@
 <script setup>
 import {onMounted, ref} from "vue";
-import OnelineChart from "@/components/charts/onelineChart.vue";
 import lvBarChart from "@/components/charts/lvBarChart.vue";
 import {Aim, CirclePlus, Remove, CollectionTag, Coin} from "@element-plus/icons-vue";
 import axios from "axios";
@@ -145,7 +144,6 @@ const fetch_chart = () => {
       <div style="display: flex;height: 50%">
         <dv-border-box-1 style="flex: 0 1 50%;height: 100%">
           <lvBarChart :optionData="一组option"></lvBarChart>
-
         </dv-border-box-1>
         <dv-border-box-1 style="flex: 0 1 50%">
           <lvBarChart :optionData="二组option"></lvBarChart>

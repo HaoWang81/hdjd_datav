@@ -62,6 +62,12 @@ const resetRoute = (route) => {
                 <el-menu-item index="3-1">
                   <router-link to="/settings/manage">数据刷新</router-link>
                 </el-menu-item>
+                <el-menu-item index="3-2">
+                  <router-link to="/settings/takephoto">扫描识物</router-link>
+                </el-menu-item>
+                <el-menu-item index="3-3">
+                  <router-link to="/report/weekreport">周报</router-link>
+                </el-menu-item>
               </el-sub-menu>
 
               <el-menu-item index="4">
@@ -132,7 +138,9 @@ const resetRoute = (route) => {
 }
 
 .head {
-  //display: flex; align-content: center; align-items: center;
+  display: flex;
+  align-content: center;
+  align-items: center;
   height: 100%;
   background-color: #535B63FF;
 }

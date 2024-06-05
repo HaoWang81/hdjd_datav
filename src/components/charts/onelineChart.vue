@@ -11,14 +11,22 @@ const initOption = ref({
   title: {
     text: "这是标题",
     textStyle: {
-      color:'#000000',
+      color: '#000000',
       fontSize: 16  // 设置字体大小
     },
   },
   data: {
     y: [1, 2, 43, 43],
     x: ['示例1', '示例2', '示例3', '示例4']
-  }
+  },
+  xAxis: {
+    axisLine: {
+      show: false // 隐藏Y轴线条
+    },
+  },
+  yAxis: {
+    show: false
+  },
 })
 
 
@@ -39,7 +47,7 @@ const initChart = () => {
   let option = {
     title: {
       text: initOption.value.title.text,
-      textStyle:initOption.value.title.textStyle,
+      textStyle: initOption.value.title.textStyle,
       x: 'center'
     },
     xAxis: {
@@ -52,12 +60,12 @@ const initChart = () => {
         }
       },
       axisLine: {
-        show: false // 隐藏Y轴线条
+        show: true // 隐藏Y轴线条
       },
     },
     yAxis: {
       type: 'value',
-      show:false
+      show: true
     },
     series: [
       {

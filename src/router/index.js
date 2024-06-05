@@ -5,7 +5,10 @@ import lv_monitor from "@/views/screen/lv_monitor.vue";
 import ngc_monitor from "@/views/screen/ngc_monitor.vue";
 import tie_monitor from "@/views/screen/tie_monitor.vue";
 import lv_details from "@/views/screen/lv_details.vue";
-import setting_manage from "@/views/settings/manage.vue";
+import setting_manage from "@/views/settings/manage.vue"
+import week_report from "@/views/report/week_report.vue";
+
+import take_photo from "@/views/settings/takephoto.vue";
 import home from "@/views/home.vue";
 import datav from '@/views/datav.vue'
 
@@ -36,6 +39,11 @@ const routes = [
         component: ngc_monitor
     },
     {
+        path: '/report/week_report',
+        name: 'week_report',
+        component: week_report
+    },
+    {
         path: '/datav',
         name: 'datav',
         component: datav,
@@ -63,6 +71,10 @@ const routes = [
                 path: '/settings/manage',
                 name: 'setting_manage',
                 component: setting_manage
+            }, {
+                path: '/settings/takephoto',
+                name: 'take_photo',
+                component: take_photo
             }
         ]
     },
