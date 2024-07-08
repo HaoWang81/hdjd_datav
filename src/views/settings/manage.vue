@@ -8,10 +8,7 @@ import axios from "axios";
 
 const uploadRef = ref()
 const loading = ref(false)
-const submitUpload = () => {
-  console.log(uploadRef.value)
-  uploadRef.value.submit()
-}
+
 const radio = ref(1)
 let actionUrl = ref("/api/settings/upload?type=" + radio.value)
 
@@ -27,12 +24,21 @@ const fallback = (e) => {
   console.log(e)
   errMessage.value = e
   centerDialogVisible.value = true
+  loading.value = false
 }
 
+const progress = (e) => {
+
+  loading.value = true
+
+}
+const error = (e) => {
+  loading.value = false
+}
 
 </script>
 <template>
-  <el-form v-loading="loading" :model="form" label-width="auto" style="width: 100%">
+  <el-form :v-loading="loading" :model="form" label-width="auto" style="width: 100%">
     <el-form-item label="数据类型">
       <el-radio-group v-model="radio" :onchange="radioChange">
         <el-radio :value="1">南高齿生产监控</el-radio>
@@ -41,6 +47,7 @@ const fallback = (e) => {
         <el-radio :value="6">铝件各工段明细</el-radio>
         <el-radio :value="3">铝件计划</el-radio>
         <el-radio :value="4">铁件计划</el-radio>
+        <el-radio :value="7">冷铁监控</el-radio>
       </el-radio-group>
     </el-form-item>
     <el-form-item label="上传" style="text-align: right">
@@ -51,6 +58,8 @@ const fallback = (e) => {
                  :action="actionUrl"
                  multiple
                  :on-success="fallback"
+                 :on-progress="progress"
+                 :on-error="error"
       >
         <el-icon class="el-icon--upload">
           <upload-filled/>
