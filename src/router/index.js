@@ -8,6 +8,7 @@ import lv_details from "@/views/screen/lv_details.vue";
 import setting_manage from "@/views/settings/manage.vue"
 import week_report from "@/views/report/week_report.vue";
 import lengtie_monitor from "@/views/screen/lengtie_monitor.vue";
+import lengtie_manager from "@/views/screen/lengtie_manager.vue";
 
 import take_photo from "@/views/settings/takephoto.vue";
 import home from "@/views/home.vue";
@@ -17,7 +18,7 @@ const routes = [
     {
         path: '/',
         name: '/',
-        component: datav,
+        component: home,
     },
     {
         path: '/screen',
@@ -40,7 +41,7 @@ const routes = [
         component: ngc_monitor
     },
     {
-        path: '/screen/lengtie_monitor',
+        path: '/lengtie_monitor',
         name: 'lengtie_monitor',
         component: lengtie_monitor
     },
@@ -55,11 +56,6 @@ const routes = [
         component: datav,
         children: [
             {
-                path: '/home',
-                name: 'home',
-                component: home,
-            },
-            {
                 path: '/screen/lv',
                 name: 'screen_lv',
                 component: lv_details
@@ -72,6 +68,11 @@ const routes = [
                 path: '/screen/tie_mb',
                 name: 'screen_tie_mb',
                 component: tie_details_mb
+            },
+            {
+                path: '/screen/lengtie_manager',
+                name: 'lengtie_manager',
+                component: lengtie_manager
             },
             {
                 path: '/settings/manage',

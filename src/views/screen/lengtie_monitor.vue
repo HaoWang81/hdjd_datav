@@ -115,7 +115,7 @@ const fetchCardData = () => {
         <div style="flex: 1;padding:5px">
           <div class="card-item" style="background: rgba(160, 190, 219, 0.3);">
             <div>
-              设计产品总数
+              涉及产品总数
             </div>
             <div style="font-size: 20px">
               {{ cardData[4] }}
