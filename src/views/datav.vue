@@ -56,6 +56,9 @@ const resetRoute = (route) => {
                 <el-menu-item index="2-6">
                   <router-link to="/screen/ngc_monitor" target='_blank'>南高齿内部生产监控</router-link>
                 </el-menu-item>
+                <el-menu-item index="2-7">
+                  <router-link to="/screen/lengtie_monitor" target='_blank'>冷铁监控</router-link>
+                </el-menu-item>
               </el-sub-menu>
               <el-sub-menu index="3">
                 <template #title>系统配置</template>

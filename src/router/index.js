@@ -7,6 +7,7 @@ import tie_monitor from "@/views/screen/tie_monitor.vue";
 import lv_details from "@/views/screen/lv_details.vue";
 import setting_manage from "@/views/settings/manage.vue"
 import week_report from "@/views/report/week_report.vue";
+import lengtie_monitor from "@/views/screen/lengtie_monitor.vue";
 
 import take_photo from "@/views/settings/takephoto.vue";
 import home from "@/views/home.vue";
@@ -37,6 +38,11 @@ const routes = [
         path: '/screen/ngc_monitor',
         name: 'ngc_monitor',
         component: ngc_monitor
+    },
+    {
+        path: '/screen/lengtie_monitor',
+        name: 'lengtie_monitor',
+        component: lengtie_monitor
     },
     {
         path: '/report/week_report',
