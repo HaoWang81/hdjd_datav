@@ -4,7 +4,7 @@ import {isMobile} from '@/assets/js/utils.js'
 import OnelineChart from "@/components/charts/onelineChart.vue";
 import {onMounted, ref} from "vue";
 import axios from "axios";
-
+import lengtie_manager from "@/views/screen/lengtie_manager.vue";
 
 const lvCountOption = ref({
   data: {},
@@ -83,7 +83,7 @@ const fetch_ipCount = () => {
 }
 
 
-const activeIndex = ref('1')
+const activeIndex = ref('3-1')
 const handleSelect = (key, keyPath) => {
   console.log(key, keyPath)
 }
@@ -110,6 +110,9 @@ const resetRoute = (route) => {
                 active-text-color="#ffd04b"
                 @select="handleSelect"
             >
+              <el-menu-item index="1">
+                <router-link to="/screen/lengtie_manager">监控汇总</router-link>
+              </el-menu-item>
 
               <el-sub-menu index="2">
                 <template #title>大屏分析</template>
@@ -126,9 +129,6 @@ const resetRoute = (route) => {
                 <el-menu-item index="2-3">
                   <a href="http://www.laotianshi.top/ngc_monitor">南高齿铁件生产监控</a>
                 </el-menu-item>
-                <el-menu-item index="2-4">
-                  <router-link to="/screen/lengtie_manager">监控汇总</router-link>
-                </el-menu-item>
 
               </el-sub-menu>
               <el-sub-menu index="3">
@@ -144,9 +144,9 @@ const resetRoute = (route) => {
                 </el-menu-item>
               </el-sub-menu>
 
-              <el-menu-item index="4">
-                <router-link to="/dashboard">仪表分析</router-link>
-              </el-menu-item>
+              <!--              <el-menu-item index="4">-->
+              <!--                <router-link to="/dashboard">仪表分析</router-link>-->
+              <!--              </el-menu-item>-->
               <!--              <el-sub-menu index="5">-->
               <!--                <template #title>图表</template>-->
               <!--                <el-menu-item index="5-1">-->
@@ -181,44 +181,44 @@ const resetRoute = (route) => {
       </el-header>
       <el-main>
         <router-view></router-view>
-        <router-view>
-          <!--          <div class="flex flex-wrap gap-4 cards">-->
-          <!--            <el-card shadow="always">-->
-          <!--              <div style="display: flex;align-content: center;align-items: center">-->
-          <!--                <div style="flex: 0 1 50%">-->
-          <!--                  <span style="font-weight: bolder">总人次</span>-->
-          <!--                </div>-->
-          <!--                <div style="flex: 0 1 50%">-->
-          <!--                  <span>{{ ip.ipCount }}</span>-->
-          <!--                </div>-->
-          <!--              </div>-->
+        <!--        <router-view>-->
+        <!--          <div class="flex flex-wrap gap-4 cards">-->
+        <!--            <el-card shadow="always">-->
+        <!--              <div style="display: flex;align-content: center;align-items: center">-->
+        <!--                <div style="flex: 0 1 50%">-->
+        <!--                  <span style="font-weight: bolder">总人次</span>-->
+        <!--                </div>-->
+        <!--                <div style="flex: 0 1 50%">-->
+        <!--                  <span>{{ ip.ipCount }}</span>-->
+        <!--                </div>-->
+        <!--              </div>-->
 
-          <!--            </el-card>-->
-          <!--            <el-card shadow="always">-->
-          <!--              <div style="display: flex">-->
-          <!--                <div style="flex: 0 1 50%">-->
-          <!--                  <span style="font-weight: bolder">累计人数</span>-->
-          <!--                </div>-->
-          <!--                <div style="flex: 0 1 50%">-->
-          <!--                  <span>{{ ip.ipDisCount }}</span>-->
-          <!--                </div>-->
-          <!--              </div>-->
-          <!--            </el-card>-->
-          <!--            &lt;!&ndash;    <el-card shadow="always">Never</el-card>&ndash;&gt;-->
-          <!--          </div>-->
-          <!--          <div style="height: 20%;">-->
-          <!--            <onelineChart :optionData="lvCountOption"></onelineChart>-->
-          <!--          </div>-->
-          <!--          <div style="height: 20%;">-->
-          <!--            <onelineChart :optionData="tieCountOption"></onelineChart>-->
-          <!--          </div>-->
-          <!--          <div style="height: 20%;">-->
-          <!--            <onelineChart :optionData="ngcCountOption"></onelineChart>-->
-          <!--          </div>-->
-          <!--          <div style="height: 20%;">-->
-          <!--            <onelineChart :optionData="ngcInnerCountOption"></onelineChart>-->
-          <!--          </div>-->
-        </router-view>
+        <!--            </el-card>-->
+        <!--            <el-card shadow="always">-->
+        <!--              <div style="display: flex">-->
+        <!--                <div style="flex: 0 1 50%">-->
+        <!--                  <span style="font-weight: bolder">累计人数</span>-->
+        <!--                </div>-->
+        <!--                <div style="flex: 0 1 50%">-->
+        <!--                  <span>{{ ip.ipDisCount }}</span>-->
+        <!--                </div>-->
+        <!--              </div>-->
+        <!--            </el-card>-->
+        <!--            &lt;!&ndash;    <el-card shadow="always">Never</el-card>&ndash;&gt;-->
+        <!--          </div>-->
+        <!--          <div style="height: 20%;">-->
+        <!--            <onelineChart :optionData="lvCountOption"></onelineChart>-->
+        <!--          </div>-->
+        <!--          <div style="height: 20%;">-->
+        <!--            <onelineChart :optionData="tieCountOption"></onelineChart>-->
+        <!--          </div>-->
+        <!--          <div style="height: 20%;">-->
+        <!--            <onelineChart :optionData="ngcCountOption"></onelineChart>-->
+        <!--          </div>-->
+        <!--          <div style="height: 20%;">-->
+        <!--            <onelineChart :optionData="ngcInnerCountOption"></onelineChart>-->
+        <!--          </div>-->
+        <!--        </router-view>-->
 
 
       </el-main>

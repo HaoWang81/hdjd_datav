@@ -18,7 +18,7 @@ const routes = [
     {
         path: '/',
         name: '/',
-        component: home,
+        component: lengtie_manager,
     },
     {
         path: '/screen',
@@ -51,6 +51,11 @@ const routes = [
         component: week_report
     },
     {
+        path: '/settings/manage',
+        name: 'setting_manage',
+        component: setting_manage
+    },
+    {
         path: '/datav',
         name: 'datav',
         component: datav,
@@ -75,10 +80,6 @@ const routes = [
                 component: lengtie_manager
             },
             {
-                path: '/settings/manage',
-                name: 'setting_manage',
-                component: setting_manage
-            }, {
                 path: '/settings/takephoto',
                 name: 'take_photo',
                 component: take_photo

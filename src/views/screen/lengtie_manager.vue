@@ -4,6 +4,7 @@ import {ref, watch, onMounted} from "vue";
 import axios from "axios";
 import {useRouter} from 'vue-router';
 import QrcodeVue from 'qrcode.vue'
+import {Upload} from "@element-plus/icons-vue";
 
 
 const router = useRouter();
@@ -13,6 +14,10 @@ const goDetail = (item) => {
 
 const goLocalDetail = (item) => {
   router.push(item)
+}
+
+const upload = () => {
+  router.push("/settings/manage")
 }
 const routeList = ref([
   {
@@ -34,6 +39,12 @@ onMounted(() => {
 
 </script>
 <template>
+  <el-button type="primary" @click="upload">
+    上传数据
+    <el-icon class="el-icon--right">
+      <Upload/>
+    </el-icon>
+  </el-button>
   <el-divider content-position="left">铁/铝/南高齿生产监控</el-divider>
   <div class="cards">
     <div class="cards-item" v-for="item in routeList" style="padding: 5px">
@@ -64,21 +75,21 @@ onMounted(() => {
     </div>
   </div>
 
-<!--  <el-divider content-position="left">大屏</el-divider>-->
+  <!--  <el-divider content-position="left">大屏</el-divider>-->
 
-<!--  <div class="cards">-->
-<!--    <div class="cards-item" style="padding: 5px">-->
-<!--      <el-card>-->
-<!--        <template #header>{{ item }}</template>-->
-<!--        <QrcodeVue :value="`http://www.laotianshi.top/#/lengtie_monitor?production_company=${item}`"-->
-<!--                   style="height: 50px;width: 50px"></QrcodeVue>-->
-<!--        <template #footer>-->
-<!--          <el-button type="primary" @click="goDetail(item)" size="small">查看详情</el-button>-->
-<!--        </template>-->
+  <!--  <div class="cards">-->
+  <!--    <div class="cards-item" style="padding: 5px">-->
+  <!--      <el-card>-->
+  <!--        <template #header>{{ item }}</template>-->
+  <!--        <QrcodeVue :value="`http://www.laotianshi.top/#/lengtie_monitor?production_company=${item}`"-->
+  <!--                   style="height: 50px;width: 50px"></QrcodeVue>-->
+  <!--        <template #footer>-->
+  <!--          <el-button type="primary" @click="goDetail(item)" size="small">查看详情</el-button>-->
+  <!--        </template>-->
 
-<!--      </el-card>-->
-<!--    </div>-->
-<!--  </div>-->
+  <!--      </el-card>-->
+  <!--    </div>-->
+  <!--  </div>-->
 
 
 </template>
