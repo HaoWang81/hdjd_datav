@@ -10,9 +10,7 @@ const cardColumns = ['今日欠货总数', '三天后计划总数', "本周计�
 const cardData = ref([0, 0, 0, 0, 0, 0, 0])
 const tableColumns = ['产品名称', '使用产品', '今日欠货', '三天后计划', '本周计划', '本月在手计划', '生产单位']
 const tableData = ref([
-  ["1#", "NGC285", "-100", "-100", "-100", "-100", "恒发"],
-  ["1#", "NGC285", "-100", "-100", "-100", "-100", "恒发"],
-  ["1#", "NGC285", "-100", "-100", "-100", "-100", "恒发"],
+
 ])
 onMounted(() => {
   const route = useRoute();
@@ -139,7 +137,9 @@ const fetchCardData = () => {
         style="height: 55%;align-items: center;color: #ffffff;background: rgba(160, 190, 219, 0.1);margin:10px 10px 0 10px;overflow:auto">
       <table style="width: 100%">
         <thead>
-        <th style="height: 50px" v-for="(item,index) in tableColumns" :key="index">{{ item }}</th>
+        <th style="height: 50px" v-for="(item,index) in tableColumns" :key="index">
+          <div class="word-wrap">{{ item }}</div>
+        </th>
         </thead>
         <tbody>
         <tr style="height: 50px" v-for="(item,index) in tableData" :key="index">
@@ -170,9 +170,18 @@ const fetchCardData = () => {
 
 /* 固定表头 */
 table thead {
+  width: 100%;
+  border-collapse: collapse;
   top: -5px;
   position: sticky;
   background: #3b658d;
   z-index: 1; /* 确保表头位于内容上方 */
+}
+
+.word-wrap {
+  display: inline-block;
+  max-width: calc(2em * 1); /* 假设每个汉字宽度为1.5em，乘以2得到两个汉字的宽度 */
+  white-space: normal;
+  word-break: break-all;
 }
 </style>
