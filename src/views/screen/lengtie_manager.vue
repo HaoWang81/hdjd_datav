@@ -4,8 +4,9 @@ import {ref, watch, onMounted} from "vue";
 import axios from "axios";
 import {useRouter} from 'vue-router';
 import QrcodeVue from 'qrcode.vue'
-import {Upload} from "@element-plus/icons-vue";
+import {Edit, Upload, Search} from "@element-plus/icons-vue";
 import {ElMessage, ElNotification} from "element-plus";
+import {transferDate} from "@/assets/js/utils.js";
 
 
 const router = useRouter();
@@ -39,7 +40,6 @@ const lvList = ref([
   }
 ])
 onMounted(() => {
-
 })
 const activeNames = ref(['0'])
 const handleChange = (val) => {
@@ -54,13 +54,65 @@ const warning = () => {
     border: true,
   })
 }
+const value = ref(new Date())
+const handleCalendarClick = (data) => {
+  let message = "暂无计划"
+  if (task.value[transferDate(data)]) {
+    message = task.value[transferDate(data)]
+  }
+  ElNotification.success({
+    title: '通知',
+    message: message,
+    showClose: false,
+    duration: 4000
+  })
+}
+
+const task = ref(
+    {
+      "2024-07-11": "今日计划。。。2024-07-11",
+      "2024-07-15": "今日计划。。。2024-07-15",
+      "2024-07-30": "铝件各个车间需盘点铝件各个车间需盘点铝件各个车间需盘点铝件各个车间需盘点铝件各个车间需盘点铝件各个车间需盘点铝件各个车间需盘点铝件各个车间需盘点铝件各个车间需盘点铝件各个车间需盘点"
+    }
+)
+const dateList = ref(['2024-07-11', '2024-07-15', '2024-07-30'])
 
 </script>
 <template>
+  <div style="width:100%">
+    <el-calendar v-model="value" style="width: 100%;" @input="handleCalendarClick">
+      <template #date-cell="{data}">
+        <div style="display: flex">
+          <div style="flex: 1 1 50%;">
+            <span>
+             {{ data.day.split('-').slice(2).join('-') }}
+            </span>
+            {{ dateList.includes(data.day) ? '✔️' : '' }}
+          </div>
+          <!--          <div style="flex: 1 1 50%;">-->
+          <!--            <el-button type="primary" size="small" :icon="Edit"/>-->
+          <!--            <el-button type="primary" size="small" :icon="Search"/>-->
+          <!--          </div>-->
+        </div>
+
+      </template>
+    </el-calendar>
+  </div>
 
 
   <div style="display:flex;padding:10px">
-    <div style="flex: 1 1 1%;width:5px;border-left:5px solid #ccc"></div>
+    <div style="flex: 1 1 1%;width:5px;border-left:5px solid #409eff"></div>
+    <div style="flex: 1 1 99%;font-size: 18px;font-weight: bolder;padding-left: 10px">周报</div>
+  </div>
+  <el-carousel :autoplay="false" type="card" height="250px" padding="10px">
+    <el-carousel-item v-for="item in ['铁件周报','铝件周报','南高齿周报','汇报周报']" :key="item">
+      <h3 text="2xl" justify="center">{{ item }}</h3>
+    </el-carousel-item>
+  </el-carousel>
+
+
+  <div style="display:flex;padding:10px;margin-top: 20px">
+    <div style="flex: 1 1 1%;width:5px;border-left:5px solid #409eff"></div>
     <div style="flex: 1 1 99%;font-size: 18px;font-weight: bolder;padding-left: 10px">生产监控快速入口</div>
   </div>
   <div class="demo-collapse" style="padding: 10px">
@@ -142,7 +194,7 @@ const warning = () => {
 
 
   <div style="display:flex;padding:10px">
-    <div style="flex: 1 1 1%;width:5px;border-left:5px solid #ccc"></div>
+    <div style="flex: 1 1 1%;width:5px;border-left:5px solid #409eff"></div>
     <div style="flex: 1 1 99%;font-size: 18px;font-weight: bolder;padding-left: 10px">数据通道</div>
   </div>
   <div style="display:flex;padding:10px">
@@ -153,6 +205,7 @@ const warning = () => {
       </el-icon>
     </el-button>
   </div>
+
 
 </template>
 <style scoped>
@@ -170,8 +223,41 @@ const warning = () => {
   padding: 15px 5px !important;
 }
 
-::v-deep .el-card__header {
+:deep(.el-card__header) {
   padding: 15px 5px !important;
 }
 
+:deep(.el-calendar-table .el-calendar-day) {
+  height: 50px !important;
+}
+
+:deep(.el-calendar__body) {
+  padding: 12px 20px 15px;
+}
+
+.el-carousel__item h3 {
+  color: #475669;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+  text-align: center;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
+}
+
+.special-date .el-calendar-day {
+  color: #fff;
+  background-color: #409eff;
+  border-radius: 50%;
+}
+
+.is-selected {
+  color: #1989fa;
+}
 </style>
